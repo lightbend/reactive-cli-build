@@ -23,9 +23,5 @@ before_cache:
 
 os: osx
 
-install:
-  - brew install bdw-gc re2 jq
-  - brew install curl --with-openssl
-
 script:
   - ./build-mac-osx
