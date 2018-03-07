@@ -6,11 +6,10 @@ env:
 
 language: scala
 
+osx_image: xcode8.3
+
 scala:
   - 2.11.11
-
-jdk:
-  - oraclejdk8
 
 cache:
   directories:
