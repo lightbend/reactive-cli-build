@@ -1,0 +1,31 @@
+env:
+  # The version to build. Artifacts will be stored in the cache
+  # so that they can be downloaded from Travis' UI.
+
+  - VERSION=0.9.0
+
+language: scala
+
+scala:
+  - 2.11.11
+
+jdk:
+  - oraclejdk8
+
+cache:
+  directories:
+    - $HOME/.ivy2/cache
+    - $HOME/.sbt/launchers
+
+before_cache:
+  - rm -rf "$HOME/.ivy2/cache/com/lightbend/rp/reactivecli"
+  - find "$HOME/.ivy2/cache" -name "ivydata-*.properties" -delete
+
+os: osx
+
+install:
+  - brew install bdw-gc re2 jq
+  - brew install curl --with-openssl
+
+script:
+  - ./build-mac-osx

@@ -1,0 +1,21 @@
+#!/usr/bin/env bash
+
+set -e
+
+PROJECT=https://github.com/lightbend/reactive-cli
+
+if [ -z "$VERSION" ]; then
+  echo "missing env var: VERSION"
+  exit 1
+fi
+
+echo "* building $VERSION"
+pwd
+
+git clone "$PROJECT" reactive-cli
+
+cd reactive-cli
+
+./build-mac-os "$VERSION"
+
+exit 0
