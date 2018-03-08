@@ -19,6 +19,6 @@ git clone "$PROJECT" reactive-cli
 
 cd reactive-cli
 
-./build-mac-os "$VERSION"
+./build-mac-osx "$VERSION"
 
 exit 0
