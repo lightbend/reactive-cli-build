@@ -1,9 +1,10 @@
-# Use GitHub UI to manually edit this file, and then kick off a build.
-# The macOS build artifact will be in the Releases page. Continue
-# with the rest of the release process.
+# Use GitHub UI to manually edit VERSION in this file.
+# This will kick off a build on Travis. Once complete, the
+# macOS build artifact will be listed on Releases page.
+# Continue with the rest of the release process.
 
 env:
-- VERSION=0.9.1
+- VERSION=0.9.0
 
 
 
