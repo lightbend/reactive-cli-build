@@ -1,24 +1,36 @@
+# Use GitHub UI to manually edit this file, and then kick off a build.
+# The macOS build artifact will be in the Releases page. Continue
+# with the rest of the release process.
+
 env:
-  # The version to build. Artifacts will be stored in the cache
-  # so that they can be downloaded from Travis' UI.
+- VERSION=0.9.0
 
-  - VERSION=0.9.0
 
+
+
+
+addons:
+  artifacts: true
+deploy:
+  provider: releases
+  api_key:
+    # See EngOps document on Google Drive
+    secure: qBzYjZSPBmsGcCuiHOVI22ud5E2e9Gl5ugQJrvBCI3l3bmyWmORkFcfJZlpSDRpRrBDQssjx2wPBOqhAIs46KDB0oCedriUXkmLV1eLJyc3ljTNhFFsHrE5c1ZOekVhU6d4ZEga8Qjnfvt/vHHNhKbp6W11R+/Nff/V4cJR8q/Jta7wMRXGe0LyslRGAu8SgcTOsedHEeqJy/SpvWYnxk38nerZRKxVHmY45YfbGlFQr9ED8VLzMqHcxfvkKAO1b9afwHMFu+5vjsqQ9/2VxOTh+7F1CdnXpvK1uMcxAK75b8I0jiVZ7iELbApi6Yffc72DZD63SFrp6JAyuoMLtral044wtB0yhusnt7COaC+Mx2UD1ll77AtjYnVW00nWbAAP7kdFt4yR2aXG2aV7W+QJJCKQupR0X39Adk0zlEQJMHPcjaw9pPvVhkEQKDzf9TcIgU2ikrJcwKjBIflet91Shha7ay0508gOKgIVDeAv9kglE9HYcyUz6kdwaohmj1SZJvcHlTDqZWKGrrA/DX9pLznhNL5GgQTZa8vpA4RRtpbcUhntL8z6S+LdD7IpnXlCbaEEn83wYsMABVhYMLTfUafhJl+XZrxGB/JyFceNG4Mq/E5yK6ONoRooTs3oaI3XcMaIqGg5yLtAbWAYDKSmG5/PfZAqUEppvQV/o3wY=
+  file_glob: true
+  file: reactive-cli/target/mac/*.zip
+  skip_cleanup: true
+  #on:
+  #  repo: lightbend/reactive-cli-build
 osx_image: xcode8.3
-
 scala:
-  - 2.11.11
-
+- 2.11.11
 cache:
   directories:
-    - $HOME/.ivy2/cache
-    - $HOME/.sbt/launchers
-
+  - "$HOME/.ivy2/cache"
+  - "$HOME/.sbt/launchers"
 before_cache:
-  - rm -rf "$HOME/.ivy2/cache/com/lightbend/rp/reactivecli"
-  - find "$HOME/.ivy2/cache" -name "ivydata-*.properties" -delete
-
+- rm -rf "$HOME/.ivy2/cache/com/lightbend/rp/reactivecli"
+- find "$HOME/.ivy2/cache" -name "ivydata-*.properties" -delete
 os: osx
-
 script:
-  - ./build-mac-osx
+- "./build-mac-osx"
