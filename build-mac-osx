@@ -3,7 +3,7 @@
 set -e
 
 brew install bdw-gc re2 jq sbt
-brew install curl --with-openssl
+brew install curl
 
 PROJECT=https://github.com/lightbend/reactive-cli
 
